@@ -1,0 +1,10 @@
+export function Footer() {
+  return (
+    <footer className="border-t border-wine/15 bg-ivory py-10">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-wine-deep/60 md:flex-row">
+        <p className="font-display">Mariana Azevedo da Silva</p>
+        <p>© {new Date().getFullYear()} — Feito com cuidado em vinho & marfim.</p>
+      </div>
+    </footer>
+  );
+}
