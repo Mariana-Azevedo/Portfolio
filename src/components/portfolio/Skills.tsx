@@ -1,37 +1,5 @@
 import { Reveal } from "./Reveal";
-
-const groups = [
-  {
-    span: "md:col-span-2 md:row-span-2",
-    title: "Testes & Automação",
-    items: ["Cypress", "Selenium", "Playwright", "Postman / Newman", "Cucumber (BDD)", "k6", "Appium"],
-    tone: "wine",
-  },
-  {
-    span: "md:col-span-2",
-    title: "Gestão & Processo",
-    items: ["Jira", "Confluence", "Azure DevOps", "Notion", "Miro"],
-    tone: "deep",
-  },
-  {
-    span: "md:col-span-2",
-    title: "Análise de Dados",
-    items: ["SQL", "PostgreSQL", "Excel avançado", "Metabase", "Google Analytics"],
-    tone: "deep",
-  },
-  {
-    span: "md:col-span-2",
-    title: "Produto & Discovery",
-    items: ["Figma", "JTBD", "OKR", "BPMN", "User Story Mapping", "Design Thinking"],
-    tone: "gold",
-  },
-  {
-    span: "md:col-span-2",
-    title: "Idiomas",
-    items: ["Português (nativo)", "Inglês (avançado)", "Espanhol (intermediário)"],
-    tone: "wine",
-  },
-];
+import { useLocale } from "@/context/LocaleContext";
 
 function toneStyles(tone: string) {
   if (tone === "deep") return "bg-wine-deep text-ivory border-wine-deep";
@@ -46,18 +14,21 @@ function chipStyles(tone: string) {
 }
 
 export function Skills() {
+  const { t } = useLocale();
+  const { pre, em, post } = t.skills.heading;
+
   return (
     <section id="skills" className="relative py-28 md:py-40">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-wine">05 — Skills</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-wine">{t.skills.tag}</p>
           <h2 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-tight text-wine-deep md:text-5xl text-balance">
-            Caixa de ferramentas <em className="italic text-wine">full-stack</em> de qualidade.
+            {pre} <em className="italic text-wine">{em}</em>{post ? ` ${post}` : ""}
           </h2>
         </Reveal>
 
         <div className="mt-14 grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-5 md:grid-cols-6">
-          {groups.map((g, i) => (
+          {t.skills.groups.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.06} className={g.span}>
               <div
                 className={`group flex h-full flex-col rounded-3xl border p-7 transition-transform duration-500 hover:-translate-y-1 ${toneStyles(g.tone)}`}

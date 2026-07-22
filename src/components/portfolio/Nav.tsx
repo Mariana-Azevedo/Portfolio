@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const links = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#carreira", label: "Carreira" },
-  { href: "#qualificacoes", label: "Qualificações" },
-  { href: "#cases", label: "Cases" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contato", label: "Contato" },
-];
+import { useLocale } from "@/context/LocaleContext";
+import type { Locale } from "@/i18n";
 
 export function Nav() {
+  const { locale, t, setLocale } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -40,7 +34,7 @@ export function Nav() {
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {links.map((l) => (
+          {t.nav.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -51,12 +45,15 @@ export function Nav() {
           ))}
         </nav>
 
-        <a
-          href="#contato"
-          className="hidden rounded-full bg-wine px-4 py-2 text-sm font-medium text-ivory transition-all hover:bg-wine-deep hover:shadow-[0_8px_24px_-8px_color-mix(in_oklab,var(--wine)_70%,transparent)] md:inline-flex"
-        >
-          Vamos conversar
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <LocaleToggle locale={locale} setLocale={setLocale} />
+          <a
+            href="#contato"
+            className="rounded-full bg-wine px-4 py-2 text-sm font-medium text-ivory transition-all hover:bg-wine-deep hover:shadow-[0_8px_24px_-8px_color-mix(in_oklab,var(--wine)_70%,transparent)]"
+          >
+            {t.nav.cta}
+          </a>
+        </div>
 
         <button
           onClick={() => setOpen((v) => !v)}
@@ -70,7 +67,7 @@ export function Nav() {
       {open && (
         <div className="mx-5 mt-3 rounded-3xl glass-wine p-5 md:hidden">
           <div className="flex flex-col gap-3">
-            {links.map((l) => (
+            {t.nav.links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -80,9 +77,39 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-2 border-t border-wine/15 pt-3">
+              <LocaleToggle locale={locale} setLocale={setLocale} />
+            </div>
           </div>
         </div>
       )}
     </header>
+  );
+}
+
+function LocaleToggle({
+  locale,
+  setLocale,
+}: {
+  locale: Locale;
+  setLocale: (l: Locale) => void;
+}) {
+  return (
+    <div className="flex items-center rounded-full border border-wine/20 bg-ivory/60 p-0.5 text-xs font-medium uppercase tracking-[0.15em] backdrop-blur-sm">
+      {(["pt", "en"] as Locale[]).map((l) => (
+        <button
+          key={l}
+          onClick={() => setLocale(l)}
+          className={`rounded-full px-3 py-1.5 transition-all duration-300 ${
+            locale === l
+              ? "bg-wine text-ivory shadow-sm"
+              : "text-wine-deep/60 hover:text-wine"
+          }`}
+          aria-pressed={locale === l}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
   );
 }

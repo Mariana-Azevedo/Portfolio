@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
+import { LocaleProvider } from "@/context/LocaleContext";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
@@ -24,17 +25,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="bg-background text-foreground">
-      <Nav />
-      <Hero />
-      <About />
-      <Timeline />
-      <Credentials />
-      <Cases />
-      <Skills />
-      <Contact />
-      <Footer />
-      <Toaster position="bottom-center" theme="light" richColors />
-    </main>
+    <LocaleProvider>
+      <main className="bg-background text-foreground">
+        <Nav />
+        <Hero />
+        <About />
+        <Timeline />
+        <Credentials />
+        <Cases />
+        <Skills />
+        <Contact />
+        <Footer />
+        <Toaster position="bottom-center" theme="light" richColors />
+      </main>
+    </LocaleProvider>
   );
 }

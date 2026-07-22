@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Sparkles } from "lucide-react";
-
-const title = ["Quality.", "Insight.", "Produto."];
+import { useLocale } from "@/context/LocaleContext";
 
 export function Hero() {
+  const { t } = useLocale();
+  const { pre, highlight, post } = t.hero.description;
+
   return (
     <section
       id="top"
       className="relative isolate flex min-h-screen items-center overflow-hidden pt-32 pb-20"
     >
-      {/* animated gradient backdrop */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -18,7 +19,6 @@ export function Hero() {
             "radial-gradient(60% 80% at 80% 10%, color-mix(in oklab, var(--wine) 22%, transparent), transparent 60%), radial-gradient(50% 60% at 10% 90%, color-mix(in oklab, var(--gold) 20%, transparent), transparent 60%), var(--ivory)",
         }}
       />
-      {/* grain */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05] mix-blend-multiply"
@@ -27,7 +27,6 @@ export function Hero() {
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
         }}
       />
-      {/* floating wine blob */}
       <motion.div
         aria-hidden
         className="absolute -right-32 top-24 -z-10 h-[28rem] w-[28rem] rounded-full blur-3xl"
@@ -43,7 +42,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 rounded-full border border-wine/20 bg-ivory/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-wine"
         >
-          <Sparkles size={14} /> Portfólio
+          <Sparkles size={14} /> {t.hero.badge}
         </motion.div>
 
         <h1 className="mt-7 font-display text-[clamp(2.75rem,8.5vw,7.5rem)] font-medium leading-[0.95] tracking-tight text-wine-deep text-balance">
@@ -53,7 +52,7 @@ export function Hero() {
         </h1>
 
         <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-          {title.map((w, i) => (
+          {t.hero.titles.map((w, i) => (
             <motion.span
               key={w}
               initial={{ opacity: 0, y: 20 }}
@@ -72,10 +71,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mt-8 max-w-xl text-base leading-relaxed text-wine-deep/75 md:text-lg"
         >
-          Cientista da computação com foco em{" "}
-          <span className="text-wine">Quality Assurance</span>, Análise de Negócios e
-          Produto. Construo confiança em cada release — do requisito ao último
-          caso de teste.
+          {pre} <span className="text-wine">{highlight}</span>{post}
         </motion.p>
 
         <motion.div
@@ -88,14 +84,14 @@ export function Hero() {
             href="#cases"
             className="group inline-flex items-center gap-2 rounded-full bg-wine-deep px-6 py-3.5 text-sm font-medium text-ivory transition-all hover:bg-wine hover:shadow-[0_16px_40px_-16px_color-mix(in_oklab,var(--wine)_70%,transparent)]"
           >
-            Ver o trabalho
+            {t.hero.cta}
             <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />
           </a>
           <a
             href="#contato"
             className="inline-flex items-center gap-2 rounded-full border border-wine/30 px-6 py-3.5 text-sm font-medium text-wine-deep transition-all hover:border-wine hover:bg-wine/5"
           >
-            Falar comigo
+            {t.hero.contact}
           </a>
         </motion.div>
       </div>

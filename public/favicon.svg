@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" fill="#EFEDE6"/>
+  <text
+    x="100"
+    y="820"
+    font-family="Fraunces, Georgia, 'Times New Roman', serif"
+    font-size="780"
+    font-weight="500"
+    font-style="italic"
+    fill="#2F0D0D"
+    letter-spacing="-10"
+  >m.</text>
+</svg>
