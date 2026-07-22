@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { useState } from "react";
 import { ArrowLeft, MapPin, Calendar, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import { getExperience } from "@/data/experiences";
@@ -39,7 +40,7 @@ function ExperiencePage() {
   return (
     <LocaleProvider>
       <main className="bg-background text-foreground">
-        <Nav />
+        <Nav minimal />
         <ExperienceDetail exp={exp} />
         <Footer />
       </main>
@@ -122,7 +123,9 @@ function ExperienceDetail({ exp }: { exp: ReturnType<typeof getExperience> & {} 
                 transition={{ delay: 0.2 + i * 0.1 }}
                 className="text-center md:text-left"
               >
-                <div className="font-display text-4xl font-medium text-ivory">{m.value}</div>
+                <div className="font-display text-4xl font-medium text-ivory">
+                  {typeof m.value === "string" ? m.value : m.value[locale]}
+                </div>
                 <div className="mt-1 text-xs uppercase tracking-[0.15em] text-ivory/60">{l(m.label)}</div>
               </motion.div>
             ))}
@@ -145,24 +148,18 @@ function ExperienceDetail({ exp }: { exp: ReturnType<typeof getExperience> & {} 
                 </p>
               </Reveal>
 
-              <div className="mt-16 space-y-12">
-                {exp.highlights.map((h, i) => (
-                  <Reveal key={i} delay={i * 0.07}>
-                    <div className="border-l-2 border-wine/20 pl-6">
-                      <h3 className="font-display text-xl text-wine-deep md:text-2xl">
-                        {l(h.label)}
-                      </h3>
-                      <ul className="mt-5 space-y-3">
-                        {h.items.map((item, j) => (
-                          <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-wine-deep/70 md:text-base">
-                            <span className="mt-2 block h-1.5 w-1.5 shrink-0 rounded-full bg-wine" />
-                            {l(item)}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Reveal>
-                ))}
+              <div className="mt-16">
+                {exp.tabs ? (
+                  <TabbedHighlights tabs={exp.tabs} l={l} />
+                ) : (
+                  <div className="space-y-12">
+                    {exp.highlights.map((h, i) => (
+                      <Reveal key={i} delay={i * 0.07}>
+                        <HighlightGroup label={l(h.label)} items={h.items.map((it) => ({ text: l(it), link: it.link }))} />
+                      </Reveal>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -188,31 +185,6 @@ function ExperienceDetail({ exp }: { exp: ReturnType<typeof getExperience> & {} 
                 </Reveal>
               )}
 
-              <Reveal delay={0.15}>
-                <div className="rounded-2xl border border-wine/15 bg-sand/30 p-6">
-                  <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-wine">
-                    {locale === "pt" ? "Detalhes" : "Details"}
-                  </h4>
-                  <dl className="mt-4 space-y-3 text-sm">
-                    <div>
-                      <dt className="text-wine-deep/50">{locale === "pt" ? "Empresa" : "Company"}</dt>
-                      <dd className="mt-0.5 font-medium text-wine-deep">{exp.company}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-wine-deep/50">{locale === "pt" ? "Período" : "Period"}</dt>
-                      <dd className="mt-0.5 font-medium text-wine-deep">{exp.year}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-wine-deep/50">{locale === "pt" ? "Tipo" : "Type"}</dt>
-                      <dd className="mt-0.5 font-medium text-wine-deep">{l(exp.type)}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-wine-deep/50">{locale === "pt" ? "Local" : "Location"}</dt>
-                      <dd className="mt-0.5 font-medium text-wine-deep">{l(exp.location)}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </Reveal>
             </div>
           </div>
         </div>
@@ -253,5 +225,82 @@ function SummaryWithLinks({
         );
       })}
     </>
+  );
+}
+
+type HighlightItem = { text: string; link?: string };
+
+function HighlightGroup({ label, items }: { label: string; items: HighlightItem[] }) {
+  return (
+    <div className="border-l-2 border-wine/20 pl-6">
+      <h3 className="font-display text-xl text-wine-deep md:text-2xl">{label}</h3>
+      <ul className="mt-5 space-y-3">
+        {items.map((item, j) => (
+          <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-wine-deep/70 md:text-base">
+            <span className="mt-2 block h-1.5 w-1.5 shrink-0 rounded-full bg-wine" />
+            {item.link ? (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-wine/40 text-wine transition-colors hover:border-wine hover:text-wine-deep"
+              >
+                {item.text}
+              </a>
+            ) : (
+              item.text
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+type Tab = NonNullable<ReturnType<typeof getExperience>>["tabs"][number];
+
+function TabbedHighlights({
+  tabs,
+  l,
+}: {
+  tabs: Tab[];
+  l: (field: { pt: string; en: string }) => string;
+}) {
+  const [active, setActive] = useState(0);
+  const current = tabs[active];
+
+  return (
+    <div>
+      {/* Tab toggle */}
+      <div className="flex flex-wrap gap-2">
+        {tabs.map((tab, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            aria-pressed={active === i}
+            className={`rounded-full border px-5 py-2 text-sm font-medium tracking-wide transition-all duration-300 ${
+              active === i
+                ? "border-wine bg-wine text-ivory shadow-sm"
+                : "border-wine/25 text-wine-deep/60 hover:border-wine/60 hover:text-wine-deep"
+            }`}
+          >
+            {l(tab.label)}
+          </button>
+        ))}
+      </div>
+
+      {/* Highlights for active tab */}
+      <motion.div
+        key={active}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="mt-10 space-y-10"
+      >
+        {current.highlights.map((h, i) => (
+          <HighlightGroup key={i} label={l(h.label)} items={h.items.map((it) => ({ text: l(it), link: it.link }))} />
+        ))}
+      </motion.div>
+    </div>
   );
 }

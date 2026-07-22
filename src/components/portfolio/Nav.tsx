@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { useLocale } from "@/context/LocaleContext";
 import type { Locale } from "@/i18n";
 
-export function Nav() {
+export function Nav({ minimal = false }: { minimal?: boolean }) {
   const { locale, t, setLocale } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,6 +15,18 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const logo = minimal ? (
+    <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold text-wine-deep">
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-wine text-ivory">M</span>
+      <span className="hidden sm:inline">Mariana A. Silva</span>
+    </Link>
+  ) : (
+    <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold text-wine-deep">
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-wine text-ivory">M</span>
+      <span className="hidden sm:inline">Mariana A. Silva</span>
+    </a>
+  );
 
   return (
     <header
@@ -28,43 +41,44 @@ export function Nav() {
             : ""
         }`}
       >
-        <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold text-wine-deep">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-wine text-ivory">M</span>
-          <span className="hidden sm:inline">Mariana A. Silva</span>
-        </a>
+        {logo}
 
-        <nav className="hidden items-center gap-7 md:flex">
-          {t.nav.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-wine-deep/70 transition-colors hover:text-wine"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
+        {!minimal && (
+          <nav className="hidden items-center gap-7 md:flex">
+            {t.nav.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm text-wine-deep/70 transition-colors hover:text-wine"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+        )}
 
         <div className="hidden items-center gap-3 md:flex">
           <LocaleToggle locale={locale} setLocale={setLocale} />
           <a
-            href="#contato"
+            href={minimal ? "/#contato" : "#contato"}
             className="rounded-full bg-wine px-4 py-2 text-sm font-medium text-ivory transition-all hover:bg-wine-deep hover:shadow-[0_8px_24px_-8px_color-mix(in_oklab,var(--wine)_70%,transparent)]"
           >
             {t.nav.cta}
           </a>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full bg-wine text-ivory md:hidden"
-          aria-label="Menu"
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        {!minimal && (
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full bg-wine text-ivory md:hidden"
+            aria-label="Menu"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        )}
       </div>
 
-      {open && (
+      {!minimal && open && (
         <div className="mx-5 mt-3 rounded-3xl glass-wine p-5 md:hidden">
           <div className="flex flex-col gap-3">
             {t.nav.links.map((l) => (

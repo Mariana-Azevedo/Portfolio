@@ -1,22 +1,48 @@
 import { useState, type FormEvent } from "react";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 import { Reveal } from "./Reveal";
 import { useLocale } from "@/context/LocaleContext";
+
+const EMAILJS_SERVICE_ID = "service_14pb0pc";
+const EMAILJS_TEMPLATE_ID = "template_fz6dzsz";
+const EMAILJS_PUBLIC_KEY = "HjUtmJXowhIFn5m0Q";
 
 export function Contact() {
   const { t } = useLocale();
   const { pre, em } = t.contact.heading;
   const [sending, setSending] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  function copyEmail() {
+    navigator.clipboard.writeText("mariana.azevedo.tech@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        form,
+        EMAILJS_PUBLIC_KEY,
+      );
       toast.success(t.contact.fields.toast);
-    }, 900);
+      form.reset();
+    } catch {
+      toast.error(
+        t.locale === "pt"
+          ? "Erro ao enviar. Tente novamente ou entre em contato pelo e-mail."
+          : "Failed to send. Please try again or reach out via email.",
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -44,15 +70,28 @@ export function Contact() {
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-10 space-y-3">
+              <div className="flex items-center gap-4 border-b border-ivory/15 py-4 text-ivory/85">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20">
+                  <Mail size={16} />
+                </span>
+                <span className="text-sm md:text-base">mariana.azevedo.tech@gmail.com</span>
+                <button
+                  onClick={copyEmail}
+                  className="group ml-auto grid h-8 w-8 place-items-center rounded-full border border-ivory/20 transition-colors hover:border-gold hover:text-gold"
+                  aria-label="Copiar e-mail"
+                >
+                  {copied ? <Check size={14} className="text-gold" /> : <Copy size={14} />}
+                </button>
+              </div>
               {[
-                { icon: Mail, label: "mariana.azevedo.tech@gmail.com", href: "mailto:mariana.azevedo.tech@gmail.com" },
-                { icon: Linkedin, label: "www.linkedin.com/mariana-azevedo", href: "https://www.linkedin.com/in/mariana-azevedo-7175b7246/", external: true },
-                { icon: Github, label: "github.com/Mariana-Azevedo", href: "https://github.com/Mariana-Azevedo", external: true },
+                { icon: Linkedin, label: "www.linkedin.com/mariana-azevedo", href: "https://www.linkedin.com/in/mariana-azevedo-7175b7246/" },
+                { icon: Github, label: "github.com/Mariana-Azevedo", href: "https://github.com/Mariana-Azevedo" },
               ].map((c) => (
                 <a
                   key={c.label}
                   href={c.href}
-                  {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex items-center gap-4 border-b border-ivory/15 py-4 text-ivory/85 transition-colors hover:text-gold"
                 >
                   <span className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 transition-colors group-hover:border-gold">

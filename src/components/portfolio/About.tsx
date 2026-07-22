@@ -27,7 +27,7 @@ export function About() {
             </div>
             <div className="absolute -bottom-5 -right-5 hidden rounded-2xl bg-wine-deep px-5 py-3 font-display text-ivory shadow-xl md:block">
               <span className="text-xs uppercase tracking-widest text-ivory/60">{t.about.location}</span>
-              <div className="text-lg">RJ · Brasil</div>
+              <div className="text-lg">{t.about.locationValue}</div>
             </div>
           </div>
         </Reveal>

@@ -29,15 +29,16 @@ export const en = {
       em: "and purpose",
     },
     paragraphs: [
-      "Computer Science graduate working at the intersection of QA, Business Analyst and Product. I translate business needs into clear requirements, robust test plans and metrics that drive decisions.",
-      "I believe quality is not a final step — it's a culture. I work with agile squads to shorten cycles, anticipate risks and ship products users can trust.",
+      "Bachelor's degree in Computer Science with experience in Business Analysis, Quality Assurance, and Product, working in international environments and collaborating with globally distributed teams. I translate business needs into clear requirements, test strategies, and actionable insights that support informed decision-making.",
+      "I believe quality is built from problem discovery through solution delivery. I enjoy understanding user needs, anticipating risks, and contributing to the development of digital products that deliver value and inspire trust.",
     ],
     stats: [
       { value: "2+", label: "years in QA & Product" },
       { value: "3", label: "languages spoken" },
-      { value: "3", label: "global product releases" },
+      { value: "2", label: "global product releases" },
     ],
     location: "Based in",
+    locationValue: "RJ · Brazil",
   },
   timeline: {
     tag: "02 — Career",
@@ -99,12 +100,13 @@ export const en = {
       },
     ],
     courses: [
-      { name: "ISTQB CTFL", org: "Foundation Level" },
       { name: "Expresso Oratória", org: "Clube da Fala Oratória" },
       { name: "Cypress Automation", org: "Udemy" },
-      { name: "API Testing with Postman", org: "Postman Academy" },
-      { name: "SQL for Data Analysis", org: "Alura" },
-      { name: "Product Discovery", org: "PM3" },
+      {
+        name: "ONE Tech Foundation Program G8 - Back End",
+        org: "Alura",
+      },
+      { name: "Agile Management: Exploring Agility Concepts", org: "Alura" },
       { name: "Software Testing BootCamp", org: "Instituto Matera" },
       { name: "Agile Management", org: "Alura" },
     ],
