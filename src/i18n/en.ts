@@ -5,7 +5,6 @@ export const en = {
       { href: "#sobre", label: "About" },
       { href: "#carreira", label: "Career" },
       { href: "#qualificacoes", label: "Credentials" },
-      { href: "#cases", label: "Cases" },
       { href: "#skills", label: "Skills" },
       { href: "#contato", label: "Contact" },
     ],
@@ -110,7 +109,7 @@ export const en = {
     ],
   },
   skills: {
-    tag: "05 — Skills",
+    tag: "04 — Skills",
     heading: {
       pre: "A",
       em: "full-stack",

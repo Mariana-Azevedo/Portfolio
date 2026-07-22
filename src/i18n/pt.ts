@@ -5,7 +5,6 @@ export const pt = {
       { href: "#sobre", label: "Sobre" },
       { href: "#carreira", label: "Carreira" },
       { href: "#qualificacoes", label: "Qualificações" },
-      { href: "#cases", label: "Cases" },
       { href: "#skills", label: "Skills" },
       { href: "#contato", label: "Contato" },
     ],
@@ -110,7 +109,7 @@ export const pt = {
     ],
   },
   skills: {
-    tag: "05 — Skills",
+    tag: "04 — Skills",
     heading: {
       pre: "Caixa de ferramentas",
       em: "full-stack",
@@ -150,7 +149,7 @@ export const pt = {
     ],
   },
   contact: {
-    tag: "06 — Contato",
+    tag: "05 — Contato",
     heading: {
       pre: "Vamos construir algo em que",
       em: "se possa confiar",

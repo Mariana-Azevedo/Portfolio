@@ -18,7 +18,7 @@ export function Skills() {
   const { pre, em, post } = t.skills.heading;
 
   return (
-    <section id="skills" className="relative py-28 md:py-40">
+    <section id="skills" className="relative bg-sand/40 py-28 md:py-40">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-wine">{t.skills.tag}</p>
