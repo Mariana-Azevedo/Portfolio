@@ -37,6 +37,7 @@ export const en = {
       { value: "3", label: "global product releases" },
     ],
     location: "Based in",
+    locationValue: "RJ · Brazil",
   },
   timeline: {
     tag: "02 — Career",

@@ -37,6 +37,7 @@ export const pt = {
       { value: "3", label: "releases de produtos globais" },
     ],
     location: "Baseada em",
+    locationValue: "RJ · Brasil",
   },
   timeline: {
     tag: "02 — Carreira",

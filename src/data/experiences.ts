@@ -8,11 +8,18 @@ export interface Experience {
   summary: { pt: string; en: string };
   highlights: {
     label: { pt: string; en: string };
-    items: { pt: string; en: string }[];
+    items: { pt: string; en: string; link?: string }[];
   }[];
-  metrics?: { value: string; label: { pt: string; en: string } }[];
+  metrics?: { value: string | { pt: string; en: string }; label: { pt: string; en: string } }[];
   tools?: string[];
   summaryLinks?: Record<string, string>;
+  tabs?: {
+    label: { pt: string; en: string };
+    highlights: {
+      label: { pt: string; en: string };
+      items: { pt: string; en: string; link?: string }[];
+    }[];
+  }[];
 }
 
 export const experiences: Experience[] = [
@@ -24,109 +31,150 @@ export const experiences: Experience[] = [
       en: "Business Analyst & Quality Assurance Intern",
     },
     company: "KIS Solutions",
-    location: { pt: "Bellingham, Washington, Estados Unidos · Remoto", en: "Bellingham, Washington, Estados Unidos · Remote" },
+    location: {
+      pt: "Bellingham, Washington, Estados Unidos · Remoto",
+      en: "Bellingham, Washington, Estados Unidos · Remote",
+    },
     type: { pt: "Estágio", en: "Internship" },
     summary: {
       pt: "Atuei como estagiária de BA e QA em um produto global de inteligência artificial, trabalhando diretamente com requisitos, documentação técnica e garantia de qualidade de software. Fui responsável por levantar e documentar requisitos funcionais e não funcionais, criar e executar casos de teste, e colaborar com times de desenvolvimento distribuídos internacionalmente.",
       en: "Worked as a BA and QA intern on a global artificial intelligence product, directly handling requirements, technical documentation and software quality assurance. Responsible for eliciting and documenting functional and non-functional requirements, creating and executing test cases, and collaborating with internationally distributed development teams.",
     },
-    highlights: [
+    highlights: [],
+    tabs: [
       {
-        label: { pt: "Business Analysis", en: "Business Analysis" },
-        items: [
+        label: { pt: "BA — Business Analysis", en: "BA — Business Analysis" },
+        highlights: [
           {
-            pt: "Levantamento e análise de requisitos com stakeholders nacionais e internacionais",
-            en: "Requirements elicitation and analysis with national and international stakeholders",
+            label: { pt: "Business Analysis", en: "Business Analysis" },
+            items: [
+              {
+                pt: "Levantamento e análise de requisitos com stakeholders internacionais em inglês",
+                en: "Conducted requirements elicitation and analysis with international stakeholders in English.",
+              },
+              {
+                pt: "Mapeamento de feedbacks dos usuários para identificação de oportunidades de melhoria",
+                en: "User feedback analysis to identify improvement opportunities",
+              },
+              {
+                pt: "Atuação como ponte entre áreas de negócio e desenvolvimento, garantindo alinhamento das regras de negócio",
+                en: "Bridging business and development teams to ensure business rule alignment",
+              },
+              {
+                pt: "Gestão e priorização de backlog alinhada às necessidades dos stakeholders",
+                en: "Backlog management and prioritization based on stakeholder needs",
+              },
+              {
+                pt: "Condução de cerimônias ágeis como planning, daily e review",
+                en: "Facilitated agile ceremonies including planning, daily stand-ups and reviews",
+              },
+              {
+                pt: "Suporte ao lançamento de produtos para clientes multinacionais",
+                en: "Supported product releases for multinational clients",
+              },
+            ],
           },
           {
-            pt: "Mapeamento de feedbacks dos usuários para identificação de oportunidades de melhoria",
-            en: "User feedback analysis to identify improvement opportunities",
+            label: { pt: "Requisitos & Documentação", en: "Requirements & Documentation" },
+            items: [
+              {
+                pt: "Elaboração e manutenção de BRDs e especificações funcionais",
+                en: "Creation and maintenance of BRDs and functional specifications",
+              },
+              {
+                pt: "Definição de histórias de usuário, critérios de aceite e fluxos de negócio",
+                en: "Definition of user stories, acceptance criteria and business workflows",
+              },
+              {
+                pt: "Auditoria de qualidade em documentação corporativa e requisitos",
+                en: "Quality audits of corporate documentation and requirements",
+              },
+              {
+                pt: "Padronização da documentação organizacional utilizando SharePoint",
+                en: "Standardization of organizational documentation using SharePoint",
+              },
+            ],
           },
           {
-            pt: "Atuação como ponte entre áreas de negócio e desenvolvimento, garantindo alinhamento das regras de negócio",
-            en: "Bridging business and development teams to ensure business rule alignment",
-          },
-          {
-            pt: "Gestão e priorização de backlog alinhada às necessidades dos stakeholders",
-            en: "Backlog management and prioritization based on stakeholder needs",
+            label: { pt: "Melhoria de Processos", en: "Process Improvement" },
+            items: [
+              {
+                pt: "Mapeamento e reestruturação do processo de onboarding de projetos",
+                en: "Mapped and redesigned the project onboarding process",
+              },
+              {
+                pt: "Condução de entrevistas, workshops e sessões de brainstorming",
+                en: "Facilitated interviews, workshops and brainstorming sessions",
+              },
+              {
+                pt: "Criação de um modelo estruturado de onboarding adotado como padrão da empresa",
+                en: "Created a structured onboarding model adopted as the company's standard",
+              },
+              {
+                pt: "Redução do tempo de adaptação de novos colaboradores",
+                en: "Reduced the onboarding time for new team members",
+              },
+            ],
           },
         ],
       },
       {
-        label: { pt: "Requisitos & Documentação", en: "Requirements & Documentation" },
-        items: [
+        label: { pt: "QA — Quality Assurance", en: "QA — Quality Assurance" },
+        highlights: [
           {
-            pt: "Elaboração e manutenção de BRDs e especificações funcionais",
-            en: "Creation and maintenance of BRDs and functional specifications",
+            label: { pt: "Testes & Execução", en: "Testing & Execution" },
+            items: [
+              {
+                pt: "Elaboração e execução de casos de teste manuais, incluindo smoke tests, testes de confirmação e testes de regressão",
+                en: "Designed and executed manual test cases, including smoke tests, confirmation and regression testing",
+              },
+              {
+                pt: "Desenvolvimento de testes automatizados em Python com validação baseada na abordagem LLM-as-a-Judge para chatbot de IA com respostas não determinísticas",
+                en: "Developed automated tests in Python using an LLM-as-a-Judge validation approach for an AI chatbot with non-deterministic responses",
+              },
+              {
+                pt: "Testes de API e validação de respostas com Postman, cobrindo endpoints REST e cenários de integração",
+                en: "API testing and response validation with Postman, covering REST endpoints and integration scenarios",
+              },
+              {
+                pt: "Testes de performance com Apache JMeter para avaliação de carga e comportamento do sistema sob estresse",
+                en: "Performance testing with Apache JMeter to evaluate load capacity and system behavior under stress",
+              },
+              {
+                pt: "Validação e troubleshooting de dados no backend com SQL, garantindo integridade entre os sistemas",
+                en: "Backend data validation and troubleshooting using SQL, ensuring data integrity across systems",
+              },
+            ],
           },
           {
-            pt: "Definição de histórias de usuário, critérios de aceite e fluxos de negócio",
-            en: "Definition of user stories, acceptance criteria and business workflows",
-          },
-          {
-            pt: "Auditoria de qualidade em documentação corporativa e requisitos",
-            en: "Quality audits of corporate documentation and requirements",
-          },
-          {
-            pt: "Padronização da documentação organizacional utilizando SharePoint",
-            en: "Standardization of organizational documentation using SharePoint",
-          },
-        ],
-      },
-      {
-        label: { pt: "Quality Assurance", en: "Quality Assurance" },
-        items: [
-          { pt: "Planejamento e execução de testes funcionais, de regressão e de integração", en: "Planning and execution of functional, regression and integration tests" },
-          { pt: "Criação de planos de teste e gestão de defeitos via Jira", en: "Test plan creation and defect management via Jira" },
-          { pt: "Testes exploratórios em produto de IA com múltiplos fluxos de usuário", en: "Exploratory testing on AI product with multiple user flows" },
-        ],
-      },
-      {
-        label: { pt: "Melhoria de Processos", en: "Process Improvement" },
-        items: [
-          {
-            pt: "Mapeamento e reestruturação do processo de onboarding de projetos",
-            en: "Mapped and redesigned the project onboarding process",
-          },
-          {
-            pt: "Condução de entrevistas, workshops e sessões de brainstorming",
-            en: "Facilitated interviews, workshops and brainstorming sessions",
-          },
-          {
-            pt: "Criação de um modelo estruturado de onboarding adotado como padrão da empresa",
-            en: "Created a structured onboarding model adopted as the company's standard",
-          },
-          {
-            pt: "Redução do tempo de adaptação de novos colaboradores",
-            en: "Reduced the onboarding time for new team members",
-          },
-        ],
-      },
-      {
-        label: { pt: "Colaboração & Processo", en: "Collaboration & Process" },
-        items: [
-          {
-            pt: "Condução de cerimônias ágeis como planning, daily e review",
-            en: "Facilitated agile ceremonies including planning, daily stand-ups and reviews",
-          },
-          {
-            pt: "Comunicação diária com equipes de desenvolvimento e produto em inglês",
-            en: "Daily communication with development and product teams in English",
-          },
-          {
-            pt: "Alinhamento contínuo entre stakeholders e equipes técnicas durante as entregas",
-            en: "Continuous alignment between stakeholders and technical teams throughout deliveries",
-          },
-          {
-            pt: "Suporte ao lançamento de produtos para clientes multinacionais",
-            en: "Supported product releases for multinational clients",
+            label: { pt: "Automação & Produtividade", en: "Automation & Productivity" },
+            items: [
+              {
+                pt: "Automação da documentação, execução de testes e gerenciamento do projeto por meio de assistentes de IA (Kiro e Cursor via MCP)",
+                en: "Automated documentation, test execution and project management workflows using AI assistants (Kiro and Cursor via MCP)",
+              },
+              {
+                pt: "Gestão e rastreamento de defeitos via Jira e Zephyr ao longo do ciclo de testes",
+                en: "Defect tracking and test management via Jira and Zephyr throughout the testing lifecycle",
+              },
+            ],
           },
         ],
       },
     ],
     metrics: [
-      { value: "100+", label: { pt: "casos de teste criados", en: "test cases created" } },
-      { value: "3", label: { pt: "idiomas de trabalho", en: "working languages" } },
+      {
+        value: "Global",
+        label: { pt: "equipe internacional", en: "international team" },
+      },
+      {
+        value: { pt: "Inglês", en: "English" },
+        label: { pt: "ambiente de trabalho", en: "working environment" },
+      },
+      {
+        value: "2",
+        label: { pt: "releases globais", en: "global releases" },
+      },
     ],
     tools: ["Jira", "Zephyr", "Postman", "SQL", "Postgresql", "Docker", "MCP", "Git/Github", "Kiro", "LangFuse", "Jmeter", "Microsoft 365"],
   },
@@ -142,23 +190,36 @@ export const experiences: Experience[] = [
     type: { pt: "Estágio", en: "Internship" },
     summary: {
       pt: "Minha primeira experiência profissional em desenvolvimento de software, atuando no projeto E-acelera, uma plataforma de educação tecnológica. Trabalhei no desenvolvimento de aplicações web utilizando TypeScript e Node.js, participando do ciclo de desenvolvimento em um ambiente ágil e colaborativo, onde consolidei os fundamentos de desenvolvimento de software e trabalho em equipe.",
-      en: "My first professional experience in software development, working on the **E-acelera** project, an educational technology platform. I contributed to the development of web applications using **TypeScript** and **Node.js**, participating in the software development lifecycle within an agile and collaborative environment, where I strengthened my foundation in software engineering and teamwork.",
+      en: "My first professional experience in software development, working on the E-acelera project, an educational technology platform. I contributed to the development of web applications using TypeScript and Node.js, participating in the software development lifecycle within an agile and collaborative environment, where I strengthened my foundation in software engineering and teamwork.",
     },
     highlights: [
       {
         label: { pt: "Desenvolvimento Front-end", en: "Front-end Development" },
         items: [
-          { pt: "Desenvolvimento de interfaces web com HTML, CSS e JavaScript", en: "Web interface development with HTML, CSS and JavaScript" },
-          { pt: "Implementação de componentes responsivos e acessíveis", en: "Implementation of responsive and accessible components" },
-          { pt: "Integração com APIs REST e consumo de dados dinâmicos", en: "REST API integration and dynamic data consumption" },
-        ],
-      },
-      {
-        label: { pt: "Processo & Aprendizado", en: "Process & Learning" },
-        items: [
-          { pt: "Participação em sprints com planejamento, daily e revisão de código", en: "Sprint participation with planning, daily standups and code review" },
-          { pt: "Uso de Git e GitHub para versionamento e colaboração", en: "Git and GitHub usage for versioning and collaboration" },
-          { pt: "Experiência inicial com metodologias ágeis e entrega iterativa", en: "Initial experience with agile methodologies and iterative delivery" },
+          {
+            pt: "Desenvolvimento de interfaces escaláveis seguindo boas práticas de desenvolvimento",
+            en: "Development of scalable interfaces following software development best practices",
+          },
+          {
+            pt: "Implementação de componentes responsivos e acessíveis",
+            en: "Implementation of responsive and accessible components",
+          },
+          {
+            pt: "Integração com APIs REST e consumo de dados dinâmicos",
+            en: "REST API integration and dynamic data consumption",
+          },
+          {
+            pt: "Participação em sprints com planejamento, daily e revisão de código",
+            en: "Sprint participation with planning, daily standups and code review",
+          },
+          {
+            pt: "Uso de Git e GitHub para versionamento e colaboração",
+            en: "Git and GitHub usage for versioning and collaboration",
+          },
+          {
+            pt: "Experiência inicial com metodologias ágeis e entrega iterativa",
+            en: "Initial experience with agile methodologies and iterative delivery",
+          },
         ],
       },
     ],
@@ -229,9 +290,31 @@ export const experiences: Experience[] = [
       {
         label: { pt: "TCC — Design Thinking & Requisitos", en: "Thesis — Design Thinking & Requirements" },
         items: [
-          { pt: "Pesquisa aplicada sobre o uso de Design Thinking na elicitação de requisitos de software", en: "Applied research on the use of Design Thinking in software requirements elicitation" },
-          { pt: "Estudo de abordagens centradas no usuário para levantamento de necessidades", en: "Study of user-centered approaches for needs assessment" },
-          { pt: "Validação da metodologia em um projeto real com usuários e stakeholders", en: "Validation of the methodology in a real project with users and stakeholders" },
+          {
+            pt: "Pesquisa sobre Design Thinking aplicado à elicitação de requisitos",
+            en: "Research on Design Thinking applied to requirements elicitation",
+          },
+          {
+            pt: "Comparação entre Storyboard, Jornada do Usuário, Storytelling e Blueprint de Serviço",
+            en: "Comparison of Storyboard, User Journey, Storytelling and Service Blueprint techniques",
+          },
+          {
+            pt: "Modelagem de processos reais e análise de requisitos funcionais e não funcionais",
+            en: "Real process modelling and analysis of functional and non-functional requirements",
+          },
+          {
+            pt: "Avaliação do impacto de abordagens centradas no usuário na descoberta de requisitos",
+            en: "Evaluation of the impact of user-centered approaches on requirements discovery",
+          },
+          {
+            pt: "Identificação das contribuições de cada técnica para a compreensão das necessidades do usuário",
+            en: "Identification of each technique's contributions to understanding user needs",
+          },
+          {
+            pt: "Quer entender mais sobre o TCC? Confira o artigo no LinkedIn",
+            en: "Want to learn more about the thesis? Read the article on LinkedIn",
+            link: "https://www.linkedin.com/posts/mariana-azevedo-7175b7246_design-thinking-na-elicita%C3%A7%C3%A3o-de-requisitos-ugcPost-7485408271034388480-hdhl/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADz1CkMBB8vL6hJZjHi1V0rn6OMeOKKkLxA",
+          },
         ],
       },
       {
