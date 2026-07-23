@@ -122,40 +122,31 @@ export const experiences: Experience[] = [
         label: { pt: "QA — Quality Assurance", en: "QA — Quality Assurance" },
         highlights: [
           {
-            label: { pt: "Testes & Execução", en: "Testing & Execution" },
+            label: { pt: "Quality Assurance", en: "Quality Assurance" },
             items: [
               {
-                pt: "Elaboração e execução de casos de teste manuais, incluindo smoke tests, testes de confirmação e testes de regressão",
-                en: "Designed and executed manual test cases, including smoke tests, confirmation and regression testing",
+                pt: "Execução de testes manuais, incluindo smoke tests e testes de regressão",
+                en: "Executed manual tests, including smoke tests and regression testing",
               },
               {
                 pt: "Desenvolvimento de testes automatizados em Python com validação baseada na abordagem LLM-as-a-Judge para chatbot de IA com respostas não determinísticas",
                 en: "Developed automated tests in Python using an LLM-as-a-Judge validation approach for an AI chatbot with non-deterministic responses",
               },
               {
-                pt: "Testes de API e validação de respostas com Postman, cobrindo endpoints REST e cenários de integração",
-                en: "API testing and response validation with Postman, covering REST endpoints and integration scenarios",
-              },
-              {
-                pt: "Testes de performance com Apache JMeter para avaliação de carga e comportamento do sistema sob estresse",
-                en: "Performance testing with Apache JMeter to evaluate load capacity and system behavior under stress",
+                pt: "Testes de API e validação de respostas com Postman, incluindo verificação de APIs REST e cenários de integração",
+                en: "API testing and response validation using Postman, including REST API and integration verification",
               },
               {
                 pt: "Validação e troubleshooting de dados no backend com SQL, garantindo integridade entre os sistemas",
                 en: "Backend data validation and troubleshooting using SQL, ensuring data integrity across systems",
               },
-            ],
-          },
-          {
-            label: { pt: "Automação & Produtividade", en: "Automation & Productivity" },
-            items: [
               {
-                pt: "Automação da documentação, execução de testes e gerenciamento do projeto por meio de assistentes de IA (Kiro e Cursor via MCP)",
-                en: "Automated documentation, test execution and project management workflows using AI assistants (Kiro and Cursor via MCP)",
+                pt: "Testes de performance com Apache JMeter para avaliação de carga e comportamento do sistema sob estresse",
+                en: "Performance testing with Apache JMeter to evaluate load and system behavior under stress",
               },
               {
-                pt: "Gestão e rastreamento de defeitos via Jira e Zephyr ao longo do ciclo de testes",
-                en: "Defect tracking and test management via Jira and Zephyr throughout the testing lifecycle",
+                pt: "Automação da documentação, execução de testes e gerenciamento do projeto por meio de assistentes de IA (Kiro e Cursor via MCP)",
+                en: "Automated documentation, test execution and project management using AI assistants (Kiro and Cursor via MCP)",
               },
             ],
           },
@@ -176,7 +167,7 @@ export const experiences: Experience[] = [
         label: { pt: "releases globais", en: "global releases" },
       },
     ],
-    tools: ["Jira", "Zephyr", "Postman", "SQL", "Postgresql", "Docker", "MCP", "Git/Github", "Kiro", "LangFuse", "Jmeter", "Microsoft 365"],
+    tools: ["Jira", "Zephyr", "Postman", "SQL", "Postgresql", "Docker", "MCP", "Git/Github", "Kiro", "LangFuse", "Jmeter", "Microsoft 365", "Hoppscotch"],
   },
   {
     slug: "aceleradora-agil",
