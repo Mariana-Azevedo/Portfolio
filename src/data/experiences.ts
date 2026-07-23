@@ -214,7 +214,7 @@ export const experiences: Experience[] = [
         ],
       },
     ],
-    tools: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
+    tools: ["TypeScript", "Node.js", "React", "Git", "GitHub"],
     summaryLinks: { "E-acelera": "https://aceleradora-agil.com.br/" },
   },
   {
@@ -225,7 +225,7 @@ export const experiences: Experience[] = [
       en: "Requirements Analyst",
     },
     company: "Fraternidade Sem Fronteiras",
-    location: { pt: "Rio de Janeiro, Brasil · Voluntário", en: "Rio de Janeiro, Brazil · Volunteer" },
+    location: { pt: "Rio de Janeiro, Brasil", en: "Rio de Janeiro, Brazil · Volunteer" },
     type: { pt: "Voluntariado", en: "Volunteer" },
     summary: {
       pt: "Atuação voluntária em uma ONG de assistência social, aplicando técnicas de análise de requisitos para otimizar o processo de atendimento aos assistidos. O projeto resultou em uma redução de 40% no tempo de atendimento, impactando diretamente a capacidade da organização de servir mais pessoas com os mesmos recursos.",
@@ -261,7 +261,7 @@ export const experiences: Experience[] = [
       { value: "↓40%", label: { pt: "tempo de atendimento", en: "service time" } },
       { value: "1 ano", label: { pt: "de impacto social", en: "of social impact" } },
     ],
-    tools: ["Miro", "Notion", "Excel", "BPMN"],
+    tools: ["Miro", "Notion", "Excel", "Trello"],
   },
   {
     slug: "ufrrj",
@@ -271,7 +271,7 @@ export const experiences: Experience[] = [
       en: "Bachelor's in Computer Science",
     },
     company: "UFRRJ",
-    location: { pt: "Seropédica, Rio de Janeiro, Brasil", en: "Seropédica, Rio de Janeiro, Brazil" },
+    location: { pt: "Nova Iguaçu, Rio de Janeiro, Brasil", en: "Nova Iguaçu, Rio de Janeiro, Brazil" },
     type: { pt: "Graduação", en: "Bachelor's Degree" },
     summary: {
       pt: "Formação em Ciência da Computação com ênfase em Engenharia de Software, Testes e Análise de Sistemas. Durante a graduação, desenvolvi base técnica sólida em programação, banco de dados, algoritmos e arquitetura de software, ao mesmo tempo em que me especializei na interseção entre tecnologia e negócio através de projetos práticos e do TCC.",
@@ -325,7 +325,7 @@ export const experiences: Experience[] = [
         ],
       },
     ],
-    tools: ["Python", "Java", "SQL", "PostgreSQL", "C"],
+    tools: ["Python", "Java", "SQL", "TypeScript", "C", "Node.js"],
   },
 ];
 

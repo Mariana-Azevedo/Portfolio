@@ -120,7 +120,7 @@ export const en = {
       {
         span: "md:col-span-2 md:row-span-2",
         title: "Testing & Automation",
-        items: ["Cypress", "Selenium", "Zephyr", "Postman", "Cucumber (BDD)", "k6", "Apache JMeter"],
+        items: ["Cypress", "Selenium", "Zephyr", "Postman", "Cucumber (BDD)", "k6", "Apache JMeter", "Hoppscotch"],
         tone: "wine",
       },
       {
