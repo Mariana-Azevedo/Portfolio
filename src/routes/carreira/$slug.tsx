@@ -7,7 +7,6 @@ import { getExperience } from "@/data/experiences";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { useLocale } from "@/context/LocaleContext";
 import { Nav } from "@/components/portfolio/Nav";
-import { Footer } from "@/components/portfolio/Footer";
 import { Reveal } from "@/components/portfolio/Reveal";
 
 export const Route = createFileRoute("/carreira/$slug")({
@@ -42,7 +41,7 @@ function ExperiencePage() {
       <main className="bg-background text-foreground">
         <Nav minimal />
         <ExperienceDetail exp={exp} />
-        <Footer />
+        <footer className="border-t border-wine/15 bg-ivory py-10" />
       </main>
     </LocaleProvider>
   );

@@ -8,7 +8,6 @@ import { Timeline } from "@/components/portfolio/Timeline";
 import { Credentials } from "@/components/portfolio/Credentials";
 import { Skills } from "@/components/portfolio/Skills";
 import { Contact } from "@/components/portfolio/Contact";
-import { Footer } from "@/components/portfolio/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,7 +32,6 @@ function Index() {
         <Credentials />
         <Skills />
         <Contact />
-        <Footer />
         <Toaster position="bottom-center" theme="light" richColors />
       </main>
     </LocaleProvider>
