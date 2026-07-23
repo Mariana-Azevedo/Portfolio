@@ -81,7 +81,7 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center gap-3"
         >
           <a
-            href="#cases"
+            href="#sobre"
             className="group inline-flex items-center gap-2 rounded-full bg-wine-deep px-6 py-3.5 text-sm font-medium text-ivory transition-all hover:bg-wine hover:shadow-[0_16px_40px_-16px_color-mix(in_oklab,var(--wine)_70%,transparent)]"
           >
             {t.hero.cta}
