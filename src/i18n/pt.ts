@@ -28,13 +28,13 @@ export const pt = {
       em: "e propósito",
     },
     paragraphs: [
-      "Formada em Ciência da Computação, atuo na fronteira entre QA, Análise de Negócios e Produto. Traduzo necessidades de negócio em requisitos claros, planos de teste robustos e métricas que conduzem decisões.",
-      "Acredito que qualidade não é etapa final — é cultura. Trabalho com squads ágeis para encurtar ciclos, antecipar riscos e entregar produtos em que o usuário pode confiar.",
+      "Formada em Ciência da Computação, tenho experiência em Análise de Negócios, Quality Assurance e Produto, atuando em ambientes internacionais e colaborando com equipes distribuídas globalmente. Transformo necessidades de negócio em requisitos claros, estratégias de teste e insights que apoiam a tomada de decisão.",
+      "Acredito que qualidade é construída desde a descoberta do problema até a entrega da solução. Gosto de compreender as necessidades dos usuários, antecipar riscos e contribuir para o desenvolvimento de produtos digitais que gerem valor e confiança.",
     ],
     stats: [
       { value: "2+", label: "anos em QA & Produto" },
       { value: "3", label: "idiomas falados" },
-      { value: "3", label: "releases de produtos globais" },
+      { value: "2", label: "releases de produtos globais" },
     ],
     location: "Baseada em",
     locationValue: "RJ · Brasil",

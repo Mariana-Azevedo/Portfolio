@@ -28,8 +28,8 @@ export const en = {
       em: "and purpose",
     },
     paragraphs: [
-      "Computer Science graduate working at the intersection of QA, Business Analyst and Product. I translate business needs into clear requirements, robust test plans and metrics that drive decisions.",
-      "I believe quality is not a final step — it's a culture. I work with agile squads to shorten cycles, anticipate risks and ship products users can trust.",
+      "Bachelor's degree in Computer Science with experience in Business Analysis, Quality Assurance, and Product, working in international environments and collaborating with globally distributed teams. I translate business needs into clear requirements, test strategies, and actionable insights that support informed decision-making.",
+      "I believe quality is built from problem discovery through solution delivery. I enjoy understanding user needs, anticipating risks, and contributing to the development of digital products that deliver value and inspire trust.",
     ],
     stats: [
       { value: "2+", label: "years in QA & Product" },
