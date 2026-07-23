@@ -34,7 +34,7 @@ export const en = {
     stats: [
       { value: "2+", label: "years in QA & Product" },
       { value: "3", label: "languages spoken" },
-      { value: "3", label: "global product releases" },
+      { value: "2", label: "global product releases" },
     ],
     location: "Based in",
     locationValue: "RJ · Brazil",
