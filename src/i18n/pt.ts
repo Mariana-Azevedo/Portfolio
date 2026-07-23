@@ -28,7 +28,7 @@ export const pt = {
       em: "e propósito",
     },
     paragraphs: [
-      "Formada em Ciência da Computação, tenho experiência em Análise de Negócios, Quality Assurance e Produto, atuando em ambientes internacionais e colaborando com equipes distribuídas globalmente. Transformo necessidades de negócio em requisitos claros, estratégias de teste e insights que apoiam a tomada de decisão.",
+      "Formada em Ciência da Computação na UFRRJ, tenho experiência em Análise de Negócios, Quality Assurance e Produto, atuando em ambientes internacionais e colaborando com equipes distribuídas globalmente. Transformo necessidades de negócio em requisitos claros, estratégias de teste e insights que apoiam a tomada de decisão.",
       "Acredito que qualidade é construída desde a descoberta do problema até a entrega da solução. Gosto de compreender as necessidades dos usuários, antecipar riscos e contribuir para o desenvolvimento de produtos digitais que gerem valor e confiança.",
     ],
     stats: [
@@ -101,9 +101,8 @@ export const pt = {
     courses: [
       { name: "Expresso Oratória", org: "Clube da Fala Oratória" },
       { name: "Cypress automation", org: "Udemy" },
-      { name: "SQL para Análise de Dados", org: "Alura" },
       { name: "Software Testing BootCamp", org: "Instituto Matera" },
-      { name: "Agile Management", org: "Alura" },
+      { name: "Agile Management", org: "Oracle" },
       { name: "ONE Tech Foundation Program G8 — Back End", org: "Alura" },
     ],
   },
