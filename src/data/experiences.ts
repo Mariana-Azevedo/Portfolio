@@ -308,22 +308,6 @@ export const experiences: Experience[] = [
           },
         ],
       },
-      {
-        label: { pt: "Disciplinas de Destaque", en: "Key Subjects" },
-        items: [
-          { pt: "Engenharia de Software, Testes de Software e Qualidade", en: "Software Engineering, Software Testing and Quality" },
-          { pt: "Análise e Projeto de Sistemas, Banco de Dados", en: "Systems Analysis and Design, Databases" },
-          { pt: "Algoritmos, Estruturas de Dados e Paradigmas de Programação", en: "Algorithms, Data Structures and Programming Paradigms" },
-        ],
-      },
-      {
-        label: { pt: "Projetos & Atividades", en: "Projects & Activities" },
-        items: [
-          { pt: "Desenvolvimento de projetos interdisciplinares com aplicação real", en: "Development of interdisciplinary projects with real-world application" },
-          { pt: "Participação em iniciativas de extensão e projetos acadêmicos", en: "Participation in extension initiatives and academic projects" },
-          { pt: "Formação bilíngue com leitura técnica extensiva em inglês", en: "Bilingual education with extensive technical reading in English" },
-        ],
-      },
     ],
     tools: ["Python", "Java", "SQL", "TypeScript", "C", "Node.js"],
   },
