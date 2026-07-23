@@ -99,14 +99,12 @@ export const en = {
       },
     ],
     courses: [
-      { name: "ISTQB CTFL", org: "Foundation Level" },
       { name: "Expresso Oratória", org: "Clube da Fala Oratória" },
       { name: "Cypress Automation", org: "Udemy" },
-      { name: "API Testing with Postman", org: "Postman Academy" },
       { name: "SQL for Data Analysis", org: "Alura" },
-      { name: "Product Discovery", org: "PM3" },
       { name: "Software Testing BootCamp", org: "Instituto Matera" },
       { name: "Agile Management", org: "Alura" },
+      { name: "ONE Tech Foundation Program G8 — Back End", org: "Alura" },
     ],
   },
   skills: {
